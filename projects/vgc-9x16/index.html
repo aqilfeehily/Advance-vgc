@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Poppins"; font-weight: 600; src: url("assets/fonts/Poppins-600.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 700; src: url("assets/fonts/Poppins-700.woff2") format("woff2"); }
+      @font-face { font-family: "Poppins"; font-weight: 800; src: url("assets/fonts/Poppins-800.woff2") format("woff2"); }
+      @font-face { font-family: "Sacramento"; font-weight: 400; src: url("assets/fonts/Sacramento-400.woff2") format("woff2"); }
+      @font-face { font-family: "NSD"; font-weight: 100 900; font-stretch: 62.5% 100%; src: url("assets/fonts/NotoSerifDisplay-800-62_5.woff2") format("woff2"); }
+
+      /* Act 1 (masalah): red + cream. Act 2 (penyelesaian, from "so ni aku nak bagi idea"): navy + sky. Placeholder palette until the brand kit arrives. */
+      :root { --royal: #fada5e; --red: #c1121f; --ink: #1b232b; --navy: #07163a; --navy2: #0f3a8a; --sky: #8cc8ff; --cream: #f4efe4; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b0b10; }
+      #root { position: absolute; inset: 0; overflow: hidden; background: #0b0b10; font-family: Poppins, sans-serif; }
+      .abs { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+
+      /* ---------- layered backgrounds (typographic, no footage available) ---------- */
+      #broll { z-index: 10; }
+      .bk { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; visibility: hidden; }
+      .bk .kb { position: absolute; left: -90px; top: -120px; width: 1260px; height: 2160px; will-change: transform; }
+      .bk .gh { position: absolute; font: 800 520px/0.8 Poppins, sans-serif; letter-spacing: -0.05em; white-space: nowrap; opacity: 0.09; }
+      .bk .sh { position: absolute; border-radius: 50%; }
+      .bk .ln { position: absolute; height: 6px; border-radius: 3px; }
+      .a1l { background: radial-gradient(90% 60% at 30% 25%, #fffaf0 0%, var(--cream) 55%, #e6dcc8 100%); }
+      .a1l .gh { color: #c1121f; opacity: .10; } .a1l .sh { background: #c1121f; opacity: .12; } .a1l .ln { background: #c1121f; opacity: .35; }
+      .a1d { background: radial-gradient(90% 60% at 70% 20%, #7a0f1c 0%, #35070d 55%, #12030a 100%); }
+      .a1d .gh { color: #fff; } .a1d .sh { background: #ff4d5e; opacity: .14; } .a1d .ln { background: #ff7a86; opacity: .4; }
+      .a2a { background: radial-gradient(90% 60% at 30% 20%, #1c58c4 0%, var(--navy2) 45%, var(--navy) 100%); }
+      .a2b { background: radial-gradient(90% 60% at 75% 25%, #2a76e8 0%, #123c93 50%, #061333 100%); }
+      .a2c { background: radial-gradient(90% 60% at 40% 15%, #14306f 0%, #0a1c47 55%, #040b22 100%); }
+      .a2a .gh, .a2b .gh, .a2c .gh { color: #fff; } .a2a .sh, .a2b .sh, .a2c .sh { background: var(--sky); opacity: .13; } .a2a .ln, .a2b .ln, .a2c .ln { background: var(--sky); opacity: .45; }
+
+      /* ---------- titles ---------- */
+      .hero, .place { position: absolute; left: 0; width: 1080px; text-align: center; pointer-events: none; visibility: hidden; }
+      .hero { z-index: 25; top: 605px; }           /* below the presenter: the head overlaps the word */
+      .place { z-index: 40; top: 150px; }
+      .hero .w { position: relative; display: inline-block; }
+      .hero .big { display: block; font: 800 250px/0.9 Poppins, sans-serif; letter-spacing: -0.035em; color: #fff;
+        text-shadow: 0 10px 50px rgba(10, 16, 22, 0.42), 0 2px 10px rgba(10, 16, 22, 0.25); white-space: nowrap; }
+      .hero .scr { position: absolute; left: 0px; top: -88px; font: 400 128px/1 Sacramento, cursive; color: #fff; transform: rotate(-7deg);
+        transform-origin: 0 100%; text-shadow: 0 4px 26px rgba(10, 16, 22, 0.55); white-space: nowrap; }
+      .place .kick { display: inline-flex; align-items: center; gap: 16px; font: italic 700 40px/1 Poppins, sans-serif; color: #fff; letter-spacing: 0.01em;
+        text-shadow: 0 3px 18px rgba(10, 16, 22, 0.55); margin-bottom: 14px; }
+      .place .big { font-family: NSD, serif; font-weight: 800; font-stretch: 62.5%; font-variation-settings: "wdth" 62.5, "wght" 800;
+        font-size: 190px; line-height: 0.86; letter-spacing: 0.005em; color: var(--red); text-transform: uppercase;
+        text-shadow: 0 6px 34px rgba(10, 16, 22, 0.25), 0 1px 3px rgba(10, 16, 22, 0.25); }
+      .place .big .ln { display: block; }
+      .place.a1 .kick { color: var(--ink); text-shadow: 0 0 14px rgba(255,255,255,.7); }
+      /* act 2: white + navy stroke + dark halo, readable over anything */
+      .place.ak .kick { color: #fff; -webkit-text-stroke: 7px var(--navy); paint-order: stroke fill; text-shadow: 0 0 18px rgba(7, 22, 58, 0.95), 0 0 40px rgba(7, 22, 58, 0.6); }
+      .place.ak .big { color: #fff; -webkit-text-stroke: 10px var(--navy); paint-order: stroke fill; text-shadow: 0 8px 0 var(--navy), 0 0 30px rgba(7, 22, 58, 0.9), 0 0 70px rgba(7, 22, 58, 0.55); }
+      .hero.ak .big { -webkit-text-stroke: 12px var(--navy); paint-order: stroke fill; text-shadow: 0 10px 0 var(--navy), 0 0 34px rgba(7, 22, 58, 0.9), 0 0 80px rgba(7, 22, 58, 0.55); }
+      .hero.ak .scr { color: #fff; -webkit-text-stroke: 6px var(--navy); paint-order: stroke fill; text-shadow: 0 0 16px rgba(7, 22, 58, 0.95), 0 0 36px rgba(7, 22, 58, 0.6); }
+      #url { position: absolute; z-index: 40; left: 0; width: 1080px; top: 560px; text-align: center; font: 700 56px/1 Poppins, sans-serif; color: #fff; letter-spacing: 0.04em;
+        -webkit-text-stroke: 8px var(--navy); paint-order: stroke fill; text-shadow: 0 5px 0 var(--navy), 0 0 26px rgba(7, 22, 58, 0.9), 0 0 56px rgba(7, 22, 58, 0.55); visibility: hidden; }
+      #url b { color: var(--royal); font-weight: 700; }
+
+      /* ---------- presenter (pixel-exact cut-out) ---------- */
+      #pres-wrap { z-index: 30; }
+      #pres-cam { position: absolute; inset: 0; }
+      #pres { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+
+      /* ---------- the user's own inserts (delivery photo, TikTok grid, teaching B-roll): unmatted source, full frame ---------- */
+      .ins { z-index: 35; overflow: hidden; visibility: hidden; background: #000; }
+      .ins video { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+
+      /* ---------- captions ---------- */
+      #caps { z-index: 50; pointer-events: none; }
+      .cap { position: absolute; left: 60px; width: 960px; top: 1335px; text-align: center; visibility: hidden; font: 800 70px/1.08 Poppins, sans-serif; color: #fff; letter-spacing: -0.01em;
+        -webkit-text-stroke: 9px var(--ink); paint-order: stroke fill; text-shadow: 0 7px 0 rgba(27, 35, 43, 0.9), 0 12px 30px rgba(0, 0, 0, 0.4); }
+      .cap .kw { color: var(--royal); }
+      .cap.ak { -webkit-text-stroke: 10px var(--navy); text-shadow: 0 7px 0 var(--navy), 0 0 22px rgba(7, 22, 58, 0.9), 0 0 48px rgba(7, 22, 58, 0.65); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="100.4" data-width="1080" data-height="1920">
+      <!-- layered backgrounds: built in anim.js from the SC list -->
+      <div id="broll" class="abs"></div>
+
+      <!-- hero words: sit BEHIND the presenter -->
+      <div class="hero" id="h-stop" style="top:470px"><div class="w"><span class="scr">tolonglah</span><span class="big">STOP</span></div></div>
+      <div class="hero ak" id="h-tahu" style="top:470px"><div class="w"><span class="scr">pun tak</span><span class="big" style="font-size:240px">TAHU</span></div></div>
+      <div class="hero ak" id="h-gali" style="top:490px"><div class="w"><span class="scr">gali dalam</span><span class="big" style="font-size:210px">DETAIL</span></div></div>
+      <div class="hero ak" id="h-baru" style="top:500px"><div class="w"><span class="scr">padahal</span><span class="big" style="font-size:190px">BARU TAHU</span></div></div>
+      <div class="hero ak" id="h-pakar" style="top:480px"><div class="w"><span class="scr">macam dah</span><span class="big" style="font-size:230px">PAKAR</span></div></div>
+      <div class="hero ak" id="h-fol" style="top:520px"><div class="w"><span class="scr">gain</span><span class="big" style="font-size:170px">FOLLOWERS</span></div></div>
+      <div class="hero ak" id="h-cli" style="top:490px"><div class="w"><span class="scr">gain</span><span class="big" style="font-size:230px">CLIENT</span></div></div>
+
+      <!-- presenter -->
+      <div id="pres-wrap" class="abs">
+        <div id="pres-cam">
+          <video id="pres" class="clip" src="assets/presenter.webm" muted playsinline data-start="0" data-duration="100.4" data-track-index="3"></video>
+        </div>
+      </div>
+
+      <!-- inserts from the source footage (their own screens/photos) -->
+      <div id="insA" class="ins abs"><video id="v-insA" class="clip" src="assets/clips/insA.mp4" muted playsinline data-start="17.73" data-duration="6.4" data-track-index="10"></video></div>
+      <div id="insB" class="ins abs"><video id="v-insB" class="clip" src="assets/clips/insB.mp4" muted playsinline data-start="83.4" data-duration="4.0" data-track-index="11"></video></div>
+
+      <!-- place titles: in front -->
+      <div class="place a1" id="p-bulan" style="top:100px"><div class="kick">Salesman kereta?</div><div class="big" style="font-size:150px"><span class="ln">Bulanan</span><span class="ln">&amp; Gaji</span></div></div>
+      <div class="place ak" id="p-fresh"><div class="kick">Idea untuk salesman</div><div class="big"><span class="ln">Content</span><span class="ln">Fresh</span></div></div>
+      <div class="place ak" id="p-cari"><div class="kick">Hari ni, tak kisah jual apa brand</div><div class="big" style="font-size:160px"><span class="ln">Cari benda</span><span class="ln">yang tak tahu</span></div></div>
+      <div class="place ak" id="p-q1"><div class="kick">Soalan 1</div><div class="big"><span class="ln">Kenapa</span><span class="ln">design ni?</span></div></div>
+      <div class="place ak" id="p-q2"><div class="kick">Soalan 2</div><div class="big"><span class="ln">Kenapa</span><span class="ln">button ni?</span></div></div>
+      <div class="place ak" id="p-q3"><div class="kick">Soalan 3</div><div class="big"><span class="ln">Kenapa tak</span><span class="ln">ada fungsi?</span></div></div>
+      <div class="place ak" id="p-buat"><div class="kick">Bila dah jumpa</div><div class="big"><span class="ln">Buat</span><span class="ln">Content</span></div></div>
+      <div class="place ak" id="p-bagus"><div class="kick">Customer akan rasa</div><div class="big" style="font-size:165px"><span class="ln">Baguslah</span><span class="ln">salesman ni</span></div></div>
+      <div class="place ak" id="p-lain"><div class="kick">Sebab salesman lain</div><div class="big" style="font-size:175px"><span class="ln">Tak pernah</span><span class="ln">cerita</span></div></div>
+      <div class="place ak" id="p-ajar"><div class="kick">Sekarang aku</div><div class="big" style="font-size:200px"><span class="ln">Mengajar</span></div></div>
+      <div class="place ak" id="p-cta"><div class="kick">Ada bisnes?</div><div class="big" style="font-size:150px"><span class="ln">Komen bisnes</span><span class="ln">korang</span></div></div>
+
+      <div id="caps" class="abs"></div>
+
+      <audio id="mix" src="assets/audio_mix.m4a" data-start="0" data-duration="100.4" data-track-index="0" data-volume="1"></audio>
+    </div>
+
+    <script src="assets/js/captions.js"></script>
+    <script src="assets/js/anim.js"></script>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = window.AKG_TL;
+    </script>
+  </body>
+</html>
