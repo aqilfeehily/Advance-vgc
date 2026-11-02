@@ -49,3 +49,10 @@ Video 01: `work/baru-tahu-01-tingkap/` (VO 50.9 s, Bahasa Melayu Gen-Z narrator 
 - `check` warns about one big file / dense track (single-file build); accepted, 0 errors.
 - Bundled font Archivo Black works by name; no `@font-face` needed.
 - `work/` and `output/` videos are git-ignored; this skill's `template/` is the only copy of the build scripts that survives.
+
+## Video 02 additions ("Kenapa wanita nampak lebih emosional", VO 58 s, female narrator)
+- New **second character "Kak"** (original): pink tudung bawal `#ff6f91`, purple baju kurung `#7a4bc7`, skin `#ecb98a`, eyelashes, yellow flower pin. `kak()` in `template02/project.py`, same ids as `mascot()` (so `look/mouth/brows/mascotIn` work). `mascot_var()` recolours the mascot for crowd scenes. Maskot lama (songkok) stays as presenter for hook/bulb/CTA.
+- New metaphors used (do not repeat in later videos): balance scale, 4 "?" cards, hormone dial + calendar loop, mood/battery/heart gauges, stacked weights squashing Kak, weather icon over mascot, three coping bubbles, crossed-out label card, iceberg ("TEKANAN" hidden below water).
+- Tone rule the user approved: sensitive topics show stress/tiredness, never a woman shouting; "angry" only as a small face at the iceberg tip.
+- `template02/` is a **project-structure refactor**: `build.py` (helpers + `exec(project.py)`), `project.py` (SC, TOTAL, scenes, CAPS, ENDS for one video), `anim_head.js` (helpers + captions + ENTER list) + `anim_body.js` (per-scene timeline), `make_audio.py` (SFX events). For video N: copy `template02/` to `work/baru-tahu-NN/scripts/`, rewrite `project.py` + `anim_body.js` + events, `cat anim_head.js anim_body.js > anim.js`, then build. `patch_scenes.py` (from `template/scripts`) is still needed (cloud/plane helpers); copy it too.
+- Hold ~0.04 s gaps between caption chunks; stack-weight offsets must be equal for all stacked items at each moment or they overlap.
