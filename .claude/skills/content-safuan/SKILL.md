@@ -26,3 +26,4 @@ build with `pip-explainer-style`, render, mux, QC, send the MP4). Reply in casua
 
 ## Video log
 - **Gary Vee / Interest Media** (Nov 2026, 65.7 s, owner line was captioned "Hai saya…" because the name was unclear; it is BroSafuan).
+- **Engagement yang tak nampak** (Nov 2026, 89.6 s, no Gary Vee content): hook = "ENGAGEMENT?" slam + "YANG KITA TAK NAMPAK" chip. Scenes: frozen progress bar + pause badge, highlighted text lines, watch-time bar, 1x→2x gauge, 2x video stack, strike-through, scrub handle, iceberg, three levers, short-lived text card, drag-back arrow, training rows. End card "ENGAGEMENT / TAK NAMPAK" + BroSafuan photo. Next: avoid these again.
