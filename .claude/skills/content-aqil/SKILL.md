@@ -78,3 +78,7 @@ If a file is missing, say so; never assume a skill was loaded.
   Scenes: bill→komitmen pair, tick rows (gaji/skills/rehat/langkah), 3–5 hari vs 1 bulan bars, 8 pagi→5 petang timeline,
   usaha→rajin pair, subuh/malam cards, "takut itu guru" pair, makan gaji vs kerja sendiri CTA. End card "BUKAN TAK MAMPU / TAKUT JE".
   Next video: pick different metaphors (e.g. counters, stacks, maps, funnels) instead of repeating the tick-row / pair layout.
+- **Cara buat konten guna AI** (Nov 2026, 75 s): hook = kicker "CARA AKU BUAT KONTEN" + kotak kuning "GUNA AI". Scenes: garis jagged→smooth,
+  idea→ChatGPT chat, blok berselerak tersusun / bar skrip mengecut / kad HOOK, skrip→CapCut editor, telefon teleprompter + stamp,
+  prompt bar bertaip + kad animation/visual, ring timer 30 min→1 jam + slider, pipeline 5 nod + titik bergerak, 5 kad video + sweep + tick,
+  repost cycle + story, butang FOLLOW. End card "IDEA SENDIRI / AI BANTU". Next: elak ring timer, pipeline dan stack kad ini.
