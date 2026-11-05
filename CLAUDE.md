@@ -31,6 +31,9 @@ If the student doesn't know which style to pick, ask what they have (footage or 
 ### Scripts and marketing: `vgc-master-knowledge`
 Whenever a student asks for a script, hook, copy, CTA, brief, plan or review, first read `.claude/skills/vgc-master-knowledge/` and use Coach Am's formulas: **HKA** (~8 s), **HIKA** (~20 s) and **SEEIUWTOA** (~40 s), with the exact definitions in the knowledge file. Never invent testimonials, prices or offers. Every video plan starts from an approved script.
 
+### Aqil's one-shot edits
+- `content-aqil` ("content aqil") and `content-safuan` ("content safuan", owner BroSafuan, his photo as the end-card logo): fetch footage, build, render and send a 9:16 PiP Explainer with no questions.
+
 ### Helper skills (engine, not styles)
 - `hyperframes`, `hyperframes-core`, `hyperframes-animation`, `hyperframes-audio`, `hyperframes-cli`, `hyperframes-creative`, `hyperframes-keyframes`, `hyperframes-registry`, `hyperframes-studio`, `media-use`, `general-video` and `faceless-explainer` are the HyperFrames engine. Read `hyperframes` first whenever you build or render.
 - `elevenlabs-voiceover` makes a voice-over from a script. It uses the student's own ElevenLabs key.
