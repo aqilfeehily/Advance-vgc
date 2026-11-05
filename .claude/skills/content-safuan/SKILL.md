@@ -1,6 +1,6 @@
 ---
 name: content-safuan
-description: "Content Safuan": Aqil's one-shot talking-head edit for the owner BroSafuan. When he says "content safuan" (optionally with a Google Drive folder link or footage in input/), do the whole job without asking, exactly like content-aqil, but the video owner is BroSafuan and his photo is the end-card logo. Use whenever the user says "content safuan", "buat content safuan", .
+description: "Content Safuan": Aqil's one-shot talking-head edit for the owner BroSafuan. When he says "content safuan" (optionally with a Google Drive folder link or footage in input/), do the whole job without asking, exactly like content-aqil, but the video owner is BroSafuan and his photo is the end-card logo. Use whenever the user says "content safuan", "buat content safuan".
 ---
 
 # Content Safuan
