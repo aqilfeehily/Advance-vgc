@@ -26,3 +26,4 @@ build with `pip-explainer-style`, render, mux, QC, send the MP4). Reply in casua
 
 ## Video log
 - **Gary Vee / Interest Media** (Nov 2026, 65.7 s, owner line was captioned "Hai saya…" because the name was unclear; it is BroSafuan).
+- **Perspektif Baru** (Nov 2026, 74.4 s): hook "CUP ATAU BRAND?". Scenes: line-art cup/apple cards, eye + glow, stacked "DENGAR" cards, fokus→kefahaman→perspektif chain, HOOK card. Whisper heard the name as "Bruce Afwan" (BroSafuan). Needed `vad_filter=True` + `condition_on_previous_text=False` in transcribe.py, otherwise it hallucinated "Terima kasih kerana menonton". Next: avoid the chain/rows layout again.
