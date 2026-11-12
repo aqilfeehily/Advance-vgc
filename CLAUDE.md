@@ -32,6 +32,7 @@ If the student doesn't know which style to pick, ask what they have (footage or 
 Whenever a student asks for a script, hook, copy, CTA, brief, plan or review, first read `.claude/skills/vgc-master-knowledge/` and use Coach Am's formulas: **HKA** (~8 s), **HIKA** (~20 s) and **SEEIUWTOA** (~40 s), with the exact definitions in the knowledge file. Never invent testimonials, prices or offers. Every video plan starts from an approved script.
 
 ### Aqil's one-shot edits
+- `safuan-skill` ("safuan skill"): Aqil's saved TikTok 9:16 "Caption Cutaway" edit for BroSafuan (white hook box, black-box captions with yellow keywords, cutaway cards in a top strip, no music, light SFX, photo end card). Renders straight away.
 - `content-aqil` ("content aqil") and `content-safuan` ("content safuan", owner BroSafuan, his photo as the end-card logo): fetch footage, build, render and send a 9:16 PiP Explainer with no questions.
 
 ### Helper skills (engine, not styles)
